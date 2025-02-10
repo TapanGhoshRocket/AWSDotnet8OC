@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AWSDotnet8OC": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
