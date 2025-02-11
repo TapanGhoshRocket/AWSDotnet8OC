@@ -12,8 +12,8 @@ FROM public.ecr.aws/lambda/dotnet:8-x86_64 AS build
 #RUN dnf install -y dotnet-sdk-8.0
 RUN dnf install -y dotnet-sdk-8.0
 WORKDIR /src
-COPY ["AWSDotnet8OC/AWSDotnet8OC.csproj", "AWSDotnet8OC/"]
-RUN dotnet restore "AWSDotnet8OC/AWSDotnet8OC.csproj"
+COPY ["AWSDotnet8OC.csproj", "."]
+RUN dotnet restore "AWSDotnet8OC.csproj"
 COPY . .
 WORKDIR "/src/AWSDotnet8OC"
 RUN dotnet build "./AWSDotnet8OC.csproj" -c Release -o /app/build
