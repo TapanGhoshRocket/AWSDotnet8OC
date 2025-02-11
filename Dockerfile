@@ -11,6 +11,7 @@ RUN dnf install -y pam-devel
 
 # This stage is used to build the service project
 FROM public.ecr.aws/lambda/dotnet:8-x86_64 AS build
+RUN dnf install -y dotnet-sdk-8.0
 WORKDIR /src
 COPY ["AWSDotnet8OC.csproj", "."]
 RUN dotnet restore "./AWSDotnet8OC.csproj"
