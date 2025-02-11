@@ -9,18 +9,17 @@ RUN dnf install -y pam-devel
 
 # This stage is used to build the service project
 FROM public.ecr.aws/lambda/dotnet:8-x86_64 AS build
-#RUN dnf install -y dotnet-sdk-8.0
 RUN dnf install -y dotnet-sdk-8.0
-WORKDIR /src
-COPY ["AWSDotnet8OC.csproj", "."]
-RUN dotnet restore "AWSDotnet8OC.csproj"
-COPY . .
-WORKDIR "/src/AWSDotnet8OC"
-RUN dotnet build "./AWSDotnet8OC.csproj" -c Release -o /app/build
+#WORKDIR /src
+#COPY ["AWSDotnet8OC.csproj", "."]
+#RUN dotnet restore "AWSDotnet8OC.csproj"
+#COPY . .
+#WORKDIR "/src/AWSDotnet8OC"
+#RUN dotnet build "./AWSDotnet8OC.csproj" -c Release -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
-FROM build AS publish
-RUN dotnet publish "./AWSDotnet8OC.csproj" -c Release -o /app/publish /p:UseAppHost=false
+#FROM build AS publish
+#RUN dotnet publish "./AWSDotnet8OC.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
