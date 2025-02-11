@@ -1,5 +1,6 @@
 FROM amazonlinux:2023 AS base
 WORKDIR /app
+RUN dnf install -y aspnetcore-runtime-8.0
 ENV LD_LIBRARY_PATH="/app/clidriver/lib/"
 RUN dnf install -y libxml2-devel
 RUN dnf install -y pam-devel
