@@ -4,13 +4,12 @@
 FROM public.ecr.aws/lambda/dotnet:8-x86_64 AS base
 WORKDIR /app
 ENV LD_LIBRARY_PATH="/app/clidriver/lib/"
-#RUN apt-get -y update && apt-get install -y libxml2
-#RUN microdnf install yum
 RUN dnf install -y libxml2-devel
 RUN dnf install -y pam-devel
 
 # This stage is used to build the service project
 FROM public.ecr.aws/lambda/dotnet:8-x86_64 AS build
+#RUN dnf install -y dotnet-sdk-8.0
 RUN dnf install -y dotnet-sdk-8.0
 WORKDIR /src
 COPY ["AWSDotnet8OC.csproj", "."]
