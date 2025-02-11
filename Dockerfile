@@ -12,7 +12,7 @@ RUN dnf install -y dotnet-sdk-8.0
 COPY ["./AWSDotnet8OC.csproj", "."]
 RUN dotnet restore "./AWSDotnet8OC.csproj"
 COPY . .
-WORKDIR "/src/AWSDotnet8OC"
+WORKDIR "/src/."
 RUN dotnet build "AWSDotnet8OC.csproj" -c Release -o /app/build
 
 FROM build AS publish
